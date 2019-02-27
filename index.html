@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Analytics</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+	</script>
+
+	<!------------------------------------------------------------------------- Google Tag Manager ------------------------------------------------------>
+
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-XXXX');</script>
+
+	<!-------------------------------------------------------------------------- End Google Tag Manager -------------------------------------------------->
+
+	<!-- this jwplayer script import need to be in <head> section or it wont work, copied from your JWPlayer dashboard -->
+	<script src="https://cdn.jwplayer.com/libraries/YOUR_JWPLAYER_PLAYER_ID.js"></script>
+</head>
+
+<body style="background-color: #F7E9E7!important;">
+
+	<!-- this GA script need to be on top within body section to make sure Brightcove player works ----------------------------------------------- -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_TRACKER_ID"></script>
+
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'YOUR_GA_TRACKER_ID');
+		gtag('event', 'page_view');
+
+	</script>
+
+	<!-- -------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+	<div class="container-fluid text-center" style="background-color: white!important;">
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				<h3>JWPlayer</h3><br>
+
+				<div id="jwplayer">
+					<!-- this is where your JWPlayer will appear -->
+				</div>
+
+				<br>
+				<span style="opacity: 0.5;font-weight: bold;"> -- This video player is embedded from JWPlayer -- </span>
+			</div>
+
+			<div class="col-md-4">
+
+				<h3>Brightcove | Akamai</h3><br>
+
+					<!-- Brightcove | Akamai -->
+
+					<!-- this snippet is copied from your Brightcove dashboard -->
+
+					<div style="position: relative; display: block; max-width: 1280px;"><div style="padding-top: 56.25%;"><iframe src="//players.brightcove.net/6006779179001/bhHZhHUKJO_default/index.html?videoId=6006991175001" 
+					allowfullscreen 
+					webkitallowfullscreen 
+					mozallowfullscreen 
+					allow="encrypted-media" 
+					style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div></div>
+
+					<!-- ##this snippet is copied from your Brightcove dashboard -->
+
+				<br>
+				<span style="opacity: 0.5;font-weight: bold;"> -- This video player is embedded from Brightcove -- </span>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<br>
+		<hr>
+	</div>
+
+	<!-- script to initiate Brightcove player -->
+	<script src="//players.brightcove.net/6006779179001/bhHZhHUKJO_default/index.min.js"></script>
+
+	<script>
+
+		var playerInstance = jwplayer("jwplayer");
+		playerInstance.setup({
+		    file: "http://scienceandfilm.org/uploads/videos/files/Flash_of_Genius_Official_Trailer_1_-_Greg_Kinnear_Movie_(2008)_HD.mp4",
+		    mediaid: "YOUR_JWPLAYER_MEDIA_ID",
+		    ga:{} // simply add this line will integrate JWP with Google Analytics
+		});
+
+		// sample for JWPlayer event
+		playerInstance.on('pause', (event) => {
+
+            alert('Why did my user pause their video instead of watching it?');
+        });
+
+	</script>
+</body>
+</html>
